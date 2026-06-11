@@ -8,29 +8,14 @@ The `validity` field on secret scanning alerts can be set to `active`, `inactive
 
 ## Setup
 
-### 1. Repository creation
-
-A public repository was created under the `oodles-noodles` org with secret scanning enabled.
-
-```bash
-gh api --method POST /orgs/oodles-noodles/repos \
-  -f name="secret-scanning-validity-test" \
-  -f visibility="public" \
-  -F auto_init=true
-
-gh api --method PATCH /repos/oodles-noodles/secret-scanning-validity-test \
-  -f "security_and_analysis[secret_scanning][status]=enabled" \
-  -f "security_and_analysis[secret_scanning_push_protection][status]=enabled"
-```
-
-### 2. Example secret committed
+### 1. Example secret committed
 
 A file `config/database.yml` was pushed containing two example secrets matching the pattern `MYAPP-SECRET-2026-` followed by 15 alphanumeric characters:
 
 - `MYAPP-SECRET-2026-xK9mP2nQ7rT4wZ`
 - `MYAPP-SECRET-2026-bN3jL8vF5hY1cW`
 
-### 3. Custom pattern created
+### 2. Custom pattern created
 
 A repo-level custom pattern named **"MYAPP Secret Key"** was created via the API:
 
@@ -47,7 +32,7 @@ echo '{"patterns":[{
 
 The pattern was then published manually via the GitHub UI (the API creates patterns in an `unpublished` state; publishing via API was not straightforward).
 
-### 4. Alerts generated
+### 3. Alerts generated
 
 After publishing, secret scanning detected both secrets and created two alerts (alert #1 and alert #2), each with an initial `validity` of `unknown`.
 
