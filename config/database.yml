@@ -1,0 +1,22 @@
+# Database Configuration
+# This file contains connection settings for the application
+
+production:
+  adapter: postgresql
+  host: db.example.com
+  port: 5432
+  database: myapp_production
+  username: app_user
+  password: MYAPP-SECRET-2026-xK9mP2nQ7rT4wZ
+  pool: 25
+  timeout: 5000
+
+staging:
+  adapter: postgresql
+  host: db-staging.example.com
+  port: 5432
+  database: myapp_staging
+  username: app_user
+  password: MYAPP-SECRET-2026-bN3jL8vF5hY1cW
+  pool: 10
+  timeout: 5000
