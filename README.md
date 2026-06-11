@@ -22,9 +22,9 @@ A repo-level custom pattern named **"MYAPP Secret Key"** was created via the API
 ```bash
 echo '{"patterns":[{
   "name": "MYAPP Secret Key",
-  "pattern": "[a-zA-Z0-9]{15}",
-  "start_delimiter": "MYAPP-SECRET-2026-",
-  "end_delimiter": "\\b"
+  "pattern": "[0-9]{4}\\-[A-Za-z0-9]{14}",
+  "start_delimiter": "MYAPP\\-SECRET\\-",
+  "end_delimiter": "\\s"
 }]}' | gh api --method POST \
   /repos/oodles-noodles/secret-scanning-validity-test/secret-scanning/custom-patterns \
   --input -
